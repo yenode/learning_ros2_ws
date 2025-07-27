@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'depend_nodes'
+package_name = 'bot_vision'
 
 setup(
     name=package_name,
@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "twist_stamper = depend_nodes.twist_stamper:main"
-
+            "color_detection = bot_vision.color_detection:main",
+            "object_detection = bot_vision.object_detection:main"
         ],
     },
 )
