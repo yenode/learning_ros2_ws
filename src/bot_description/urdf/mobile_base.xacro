@@ -121,16 +121,16 @@
         <child link="caster_wheel_link" />
         <origin xyz="${base_length * (3.0/8.0)} 0 -0.05" rpy="0 0 0" />
     </joint>
-    <joint name="right_wheel_base_joint" type="continuous">
+    <joint name="left_wheel_base_joint" type="continuous">
         <parent link="base_link" />
-        <child link="right_wheel_link" />
+        <child link="left_wheel_link" />
         <origin xyz="${-base_length * (3.0/8.0)} ${(base_width / 2.0) + (wheel_length / 2.0)} 0" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-1.57" upper="1.57" velocity="100" effort="100" />
     </joint>
-    <joint name="left_wheel_base_joint" type="continuous">
+    <joint name="right_wheel_base_joint" type="continuous">
         <parent link="base_link" />
-        <child link="left_wheel_link" />
+        <child link="right_wheel_link" />
         <origin xyz="${-base_length * (3.0/8.0)} ${(-base_width / 2.0) + (-wheel_length / 2.0)} 0" rpy="0 0 0" />
         <axis xyz="0 1 0" />
         <limit lower="-1.57" upper="1.57" velocity="100" effort="100" />

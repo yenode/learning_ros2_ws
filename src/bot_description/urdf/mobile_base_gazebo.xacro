@@ -8,7 +8,7 @@
 
     <gazebo>
     <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <parameters>$(find-pkg-share bot_controller)/config/bot_controller.yaml</parameters>
+      <parameters>$(find bot_controller)/config/bot_controller.yaml</parameters>
     </plugin>
     
     <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
