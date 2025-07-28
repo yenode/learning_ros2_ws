@@ -6,6 +6,7 @@ This project implements a real-time object and color detection system on a diffe
 ![Gazebo](https://img.shields.io/badge/Gazebo-Harmonic-orange)
 ![Python](https://img.shields.io/badge/Python-3.12-yellow.svg)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)
+![Ultralytics](https://img.shields.io/badge/YOLOv8-red)
 
 ***
 
