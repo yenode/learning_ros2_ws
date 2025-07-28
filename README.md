@@ -1,4 +1,4 @@
-# Implemented Object Detection And Color Detection Using OpenCV and Ultralytics YOLOv8
+# Implemented Object Detection And Color Detection Using OpenCV and Ultralytics YOLOv8 For a Differential Drive Robot 
 
 ## 1. Robot Model Details
 
@@ -12,6 +12,9 @@ ROS2 package ros2_control is used for configuring the robot's joints for effecti
 
 Robot can be moved using keyboard with the use of teleop_twist_keyboard node.
 
+<img width="562" height="439" alt="image" src="https://github.com/user-attachments/assets/3d3eb6b3-f162-42d5-9da7-3ff978a5b2bf" />
+
+
 ## 3. Simulation
 
 Gazebo simulator is used for creating a world and launching the robot in a custom world.
@@ -20,21 +23,27 @@ A custom world, with the file name my_world.sdf, contains some COCO Objects dete
 
 Camera gets a view of the gazebo world and then the object_detection node and color_detection uses it for detection algorithms.
 
-## Theoretical Portion for URDF (Unified Robot Description Format)
+## 4. Results
 
-#### URDF is XML-based format that describes a robot's physical structure, visual appearance, and collision properties. It's the foundation for robot modeling in ROS.
+### A. Simulated World
 
-### Key URDF Concepts
-#### Links and Joints: URDF models robots as a tree structure of links connected by joints. Links represent rigid bodies (like robot arms, wheels, sensors), while joints define how links move relative to each other (revolute, prismatic, continuous, fixed).
-#### Visual and Collision Elements: Each link can have visual geometry (what you see in visualization tools) and collision geometry (simplified shapes for physics calculations). These often differ - collision meshes are typically simpler for computational efficiency.
-#### Inertial Properties: Links include mass, center of mass, and inertia tensors needed for physics simulation in Gazebo or other simulators.
-#### Materials and Colors: URDF supports material definitions for visual appearance, including colors and textures.
+Below is the custom world simulated in gazebo with our diff_drive robot spawned in it.
 
-### Transform Frames (TFs)
-#### The TF system manages coordinate frame relationships throughout a robot system. It automatically computes transformations between any two coordinate frames in the robot.
-#### Core TF Concepts
-#### Coordinate Frames: Every sensor, joint, and important robot component has its own coordinate frame. Frames have position and orientation relative to other frames.
-#### Transform Tree: All frames form a single tree structure with no loops. Each frame has exactly one parent (except the root frame, often "base_link" or "map").
+<img width="743" height="439" alt="image" src="https://github.com/user-attachments/assets/bb32f47e-b9ca-440d-b18f-88d61ee36f14" />
 
-### Integration: URDF + TF
-#### The magic happens when URDF and TF work together through the robot_state_publisher node. This node reads the URDF file and joint states, then publishes the corresponding TF transforms for all robot links.
+### B. Object Detection Using Ultralytics YOLOv8
+
+Below Video shows real-time object detection using YOLO on robot movement.
+
+[Demonstration.webm](https://github.com/user-attachments/assets/6b2c4b91-7335-4944-b3c1-8cf80aca6e83)
+
+### C. Color Detection with the help of HSV format using OpenCV
+
+Below Video shows Bright red Ball detection on robot movement.
+
+[color.webm](https://github.com/user-attachments/assets/7a47e89b-eaa7-494f-85fc-9eaf3720daf5)
+
+
+
+
+
