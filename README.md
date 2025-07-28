@@ -1,4 +1,4 @@
-# Commands & Theoretical PortionURDF (Unified Robot Description Format)
+# Commands & Theoretical Portion for URDF (Unified Robot Description Format)
 
 ### URDF is XML-based format that describes a robot's physical structure, visual appearance, and collision properties. It's the foundation for robot modeling in ROS.
 
