@@ -19,7 +19,7 @@ class ColorDetection(Node):
             1  # Queue size of 1
         )
 
-        self.publisher = self.create_publisher(Twist, 'cmd_vel', 10)
+        self.publisher = self.create_publisher(Twist, '/bot_controller/cmd_vel_unstamped', 10)
         
         # Initialize CvBridge
         self.bridge = CvBridge()

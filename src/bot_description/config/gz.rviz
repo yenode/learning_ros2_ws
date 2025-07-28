@@ -5,8 +5,9 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /RobotModel1
+        - /Camera1
       Splitter Ratio: 0.5
-    Tree Height: 489
+    Tree Height: 197
   - Class: rviz_common/Views
     Expanded:
       - /Current View1
@@ -51,73 +52,35 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_back_left_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_back_left_hub_motor_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_back_right_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_back_right_hub_motor_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_front_left_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_front_left_hub_motor_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_front_right_arm:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_front_right_hub_motor_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_link_optical:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        laser_link:
+        camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        navsat_link:
+        caster_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        rgb_camera:
+          Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -146,6 +109,25 @@ Visualization Manager:
         {}
       Update Interval: 0
       Value: false
+    - Class: rviz_default_plugins/Camera
+      Enabled: true
+      Far Plane Distance: 100
+      Image Rendering: background and overlay
+      Name: Camera
+      Overlay Alpha: 0.5
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /camera/image_raw
+      Value: true
+      Visibility:
+        Grid: true
+        RobotModel: true
+        TF: true
+        Value: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -182,14 +164,16 @@ Visualization Manager:
       Yaw: 5.615002632141113
     Saved: ~
 Window Geometry:
+  Camera:
+    collapsed: false
   Displays:
     collapsed: false
-  Height: 1131
+  Height: 863
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001c90000040dfc0200000002fb000000100044006900730070006c006100790073000000003f0000026f000000cc00fffffffb0000000a00560069006500770073000000003f0000040d000000a900ffffff0000039f0000040d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001c900000301fc0200000003fb000000100044006900730070006c006100790073010000003f0000014b000000cc00fffffffb0000000a00560069006500770073000000003f0000040d000000a900fffffffb0000000c00430061006d0065007200610100000190000001b00000001700ffffff000003d10000030100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 927
-  X: 66
-  Y: 32
+  Width: 1440
+  X: 0
+  Y: 0

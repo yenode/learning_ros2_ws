@@ -9,6 +9,9 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(builtin_interfaces REQUIRED)
+find_package(ament_cmake_python REQUIRED)
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development NumPy REQUIRED)
+
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/DetectedObject.msg"
