@@ -77,7 +77,7 @@ The robot's controllers are managed via the `ros2_control` framework. The node g
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/yenode/learning_ros2_ws.git
     cd learning_ros2_ws/
     ```
 
