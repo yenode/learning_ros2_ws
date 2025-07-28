@@ -78,8 +78,8 @@ The robot's controllers are managed via the `ros2_control` framework. The node g
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/yenode/learning_ros2_ws.git
-    cd learning_ros2_ws/
+    git clone https://github.com/yenode/ros2_yolo_opencv_robot.git
+    cd <your_ws_name>
     ```
 
 2.  **Install Python dependencies:**
@@ -89,7 +89,7 @@ The robot's controllers are managed via the `ros2_control` framework. The node g
 
 3.  **Build the ROS2 workspace:**
     ```bash
-    cd learning_ros2_ws/
+    cd <your_ws_name>
     colcon build 
     ```
 
