@@ -1,49 +1,158 @@
-# Implemented Object Detection And Color Detection Using OpenCV and Ultralytics YOLOv8 For a Differential Drive Robot 
+# Object & Color Detection Robot using ROS2, YOLOv8, and OpenCV
 
-## 1. Robot Model Details
+This project implements a real-time object and color detection system on a differential drive robot using **ROS2**, **Gazebo**, **Ultralytics YOLOv8**, and **OpenCV**. The robot can navigate a simulated environment and identify objects based on pre-trained models and specific color masks.
 
-A basic three wheel(Two motion wheels and one caster wheel) differential drive robot with a Camera sensor for perception and IMU Sensor for odometry.
+![ROS2](https://img.shields.io/badge/ROS2-Jazzy-blue)
+![Gazebo](https://img.shields.io/badge/Gazebo-Harmonic-orange)
+![Python](https://img.shields.io/badge/Python-3.12-yellow.svg)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)
 
-<img width="285" height="159" alt="image" src="https://github.com/user-attachments/assets/68bf383c-6d1a-4cd8-9e72-1a02f208d36b" />
+***
 
-## 2. Robot Control
+## 📋 Table of Contents
 
-ROS2 package ros2_control is used for configuring the robot's joints for effective control.
+* [Key Features](#-key-features)
+* [System Architecture](#-system-architecture)
+* [Tech Stack](#-tech-stack)
+* [Getting Started](#-getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation & Setup](#installation--setup)
+* [Usage](#-usage)
+* [Results & Demonstration](#-results--demonstration)
+    * [Simulated World](#a-simulated-world-in-gazebo)
+    * [YOLOv8 Object Detection](#b-object-detection-with-yolov8)
+    * [OpenCV Color Detection](#c-color-detection-with-opencv)
 
-Robot can be moved using keyboard with the use of teleop_twist_keyboard node.
+***
 
-<img width="562" height="439" alt="image" src="https://github.com/user-attachments/assets/3d3eb6b3-f162-42d5-9da7-3ff978a5b2bf" />
+## ✨ Key Features
 
+* **Real-time Object Detection**: Utilizes the powerful **YOLOv8** model from Ultralytics to detect a wide range of COCO objects.
+* **Precise Color Detection**: Implements **HSV color space masking** with OpenCV to reliably detect objects of specific colors (e.g., bright red).
+* **Realistic Simulation**: The robot and its environment are simulated using **Gazebo**, allowing for robust testing and development.
+* **ROS2 Integration**: Built on ROS2, providing a modular and scalable framework for robotic applications.
+* **Standardized Control**: Leverages `ros2_control` for streamlined hardware abstraction and `teleop_twist_keyboard` for easy manual control.
 
-## 3. Simulation
+***
 
-Gazebo simulator is used for creating a world and launching the robot in a custom world.
+## 🏗️ System Architecture
 
-A custom world, with the file name my_world.sdf, contains some COCO Objects detectable by YOLO and some coloured objects.
+### Robot Model
 
-Camera gets a view of the gazebo world and then the object_detection node and color_detection uses it for detection algorithms.
+The robot is a differential drive model with two actuated wheels and a passive caster wheel for stability. Perception is handled by a forward-facing camera, and odometry is provided by an IMU sensor.
 
-## 4. Results
+<img width="285" height="159" alt="Robot Model" src="https://github.com/user-attachments/assets/68bf383c-6d1a-4cd8-9e72-1a02f208d36b" />
 
-### A. Simulated World
+### Control System
 
-Below is the custom world simulated in gazebo with our diff_drive robot spawned in it.
+The robot's controllers are managed via the `ros2_control` framework. The node graph below shows the topics and services used for teleoperation, allowing keyboard commands to be translated into robot motion (`cmd_vel`).
 
-<img width="743" height="439" alt="image" src="https://github.com/user-attachments/assets/bb32f47e-b9ca-440d-b18f-88d61ee36f14" />
+<img width="562" height="439" alt="Control System Graph" src="https://github.com/user-attachments/assets/3d3eb6b3-f162-42d5-9da7-3ff978a5b2bf" />
 
-### B. Object Detection Using Ultralytics YOLOv8
+***
 
-Below Video shows real-time object detection using YOLO on robot movement.
+## 🛠️ Tech Stack
 
-[Demonstration.webm](https://github.com/user-attachments/assets/6b2c4b91-7335-4944-b3c1-8cf80aca6e83)
+* **Framework**: ROS2 Jazzy
+* **Simulator**: Gazebo Harmonic
+* **Object Detection**: Ultralytics YOLOv8
+* **Computer Vision**: OpenCV
+* **Robot Control**: `ros2_control`
+* **Languages**: Python, XML (URDF/SDF)
+* **Build System**: `colcon`
 
-### C. Color Detection with the help of HSV format using OpenCV
+***
 
-Below Video shows Bright red Ball detection on robot movement.
+## 🚀 Getting Started
 
-[color.webm](https://github.com/user-attachments/assets/7a47e89b-eaa7-494f-85fc-9eaf3720daf5)
+### Prerequisites
 
+* Ubuntu 24.04
+* ROS2 Jazzy Jalisco
+* Gazebo for ROS2 (`ros-jazzy-ros-gz*`)
+* Python 3.12 with pip
+* `colcon` build tools
 
+### Installation & Setup
 
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd learning_ros2_ws/
+    ```
 
+2.  **Install Python dependencies:**
+    ```bash
+    pip install requirements.txt
+    ```
 
+3.  **Build the ROS2 workspace:**
+    ```bash
+    cd learning_ros2_ws/
+    colcon build 
+    ```
+
+4.  **Source the workspace:**
+    ```bash
+    source install/setup.bash
+    ```
+
+***
+
+## 🎮 Usage
+
+1.  **Launch the Simulation:**
+    This command starts Gazebo with the custom world and spawns the robot.
+    ```bash
+    ros2 launch bot_description my_world.launch.py
+    ```
+    
+2.  **Configure Robot Controller:**
+    Open a new terminal, source the workspace, and run the bot_controller launch file.
+    ```bash
+    ros2 launch bot_controller bot_controller.launch.xml
+    ```
+    
+3.  **Custom node for converting Twist messages into Twist Stamped messages:**
+    Open a new terminal, source the workspace, and run the twist_stamper node.
+    ```bash
+    ros2 run depend_nodes twist_stamper
+    ```
+    
+4.  **Control the Robot:**
+    Open a new terminal, source the workspace, and run the teleop node.
+    ```bash
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+    ```
+    
+5.  **Run Object Detection Node:**
+    ```bash
+    ros2 run bot_vision object_detection_node
+    ```
+    
+6.  **Run Color Detection Node:**
+    ```bash
+    ros2 run bot_vision color_detection_node
+    ```
+
+***
+
+## 📈 Results & Demonstration
+
+### A. Simulated World in Gazebo
+
+The custom Gazebo world (`my_world.sdf`) is populated with various objects for testing both detection algorithms.
+
+<img width="743" height="439" alt="Gazebo Simulation World" src="https://github.com/user-attachments/assets/bb32f47e-b9ca-440d-b18f-88d61ee36f14" />
+
+### B. Object Detection with YOLOv8
+
+The video below demonstrates real-time object detection as the robot moves through the environment. The YOLOv8 model successfully identifies and draws bounding boxes around objects like chairs, couches, and potted plants.
+
+**[▶️ Watch YOLOv8 Detection Video](https://github.com/user-attachments/assets/6b2c4b91-7335-4944-b3c1-8cf80aca6e83)**
+
+### C. Color Detection with OpenCV
+
+This video shows the robot identifying a bright red ball using an HSV color mask. This method is highly effective for detecting objects with specific, consistent colors.
+
+**[▶️ Watch Color Detection Video](https://github.com/user-attachments/assets/7a47e89b-eaa7-494f-85fc-9eaf3720daf5)**
