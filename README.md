@@ -105,7 +105,7 @@ The robot's controllers are managed via the `ros2_control` framework. The node g
 1.  **Launch the Simulation:**
     This command starts Gazebo with the custom world and spawns the robot.
     ```bash
-    ros2 launch bot_description my_world.launch.py
+    ros2 launch bot_description gazebo.launch.xml
     ```
     
 2.  **Configure Robot Controller:**
@@ -123,17 +123,17 @@ The robot's controllers are managed via the `ros2_control` framework. The node g
 4.  **Control the Robot:**
     Open a new terminal, source the workspace, and run the teleop node.
     ```bash
-    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/bot_controller/cmd_vel_unstamped
     ```
     
 5.  **Run Object Detection Node:**
     ```bash
-    ros2 run bot_vision object_detection_node
+    ros2 run bot_vision object_detection
     ```
     
 6.  **Run Color Detection Node:**
     ```bash
-    ros2 run bot_vision color_detection_node
+    ros2 run bot_vision color_detection
     ```
 
 ***
