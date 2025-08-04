@@ -2,7 +2,6 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
-from geometry_msgs.msg import Twist
 import cv2
 import numpy as np
 import threading
@@ -18,8 +17,6 @@ class ColorDetection(Node):
             self.image_callback,
             1  # Queue size of 1
         )
-
-        self.publisher = self.create_publisher(Twist, '/bot_controller/cmd_vel_unstamped', 10)
         
         # Initialize CvBridge
         self.bridge = CvBridge()
@@ -81,14 +78,6 @@ class ColorDetection(Node):
 
     def process_image(self, img):
         """Image processing task."""
-        msg = Twist()
-        msg.linear.x = 0.0
-        msg.linear.y = 0.0
-        msg.linear.z = 0.0
-        msg.angular.x = 0.0
-        msg.angular.y = 0.0
-        msg.angular.z = 0.0
-
         rows,cols = img.shape[:2]
 
         R,G,B = self.convert2rgb(img)
